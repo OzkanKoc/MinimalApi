@@ -1,12 +1,12 @@
-using MinApi.EndpointsDescribers;
+using MinApi.EndpointsDefinations;
 using MinApi.Models;
 using MinApi.Repositories;
 
-namespace MinApi.IEndpointDescribers;
+namespace MinApi.EndpointDefination;
 
-public class ProductEndpointDescriber : IEndpointDescriber
+public class ProductEndpointDefination : IEndpointDefination
 {
-    public void DescribeEndpoints(WebApplication app)
+    public void DefineEndpoints(WebApplication app)
     {
         app.MapGet("/products", (IProductRepository productRepository) =>
         {
@@ -38,7 +38,7 @@ public class ProductEndpointDescriber : IEndpointDescriber
         });
     }
 
-    public void DescribeServices(IServiceCollection services)
+    public void DefineServices(IServiceCollection services)
     {
         services.AddSingleton<IProductRepository, ProductRepository>();
     }
